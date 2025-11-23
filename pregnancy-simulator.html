@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby Quest - Pregnancy Simulator Game</title>
+    <link rel="stylesheet" href="pregnancy-simulator.css">
+</head>
+<body>
+    <div class="container">
+        <header class="game-header">
+            <h1>▼ BABY QUEST ▼</h1>
+            <p class="subtitle">[ 40 WEEK RPG ADVENTURE ]</p>
+            <div class="game-stats">
+                <div class="stat-badge">
+                    <span class="badge-icon">⭐</span>
+                    <span class="badge-value" id="gameScore">0</span>
+                </div>
+                <div class="stat-badge">
+                    <span class="badge-icon">🏆</span>
+                    <span class="badge-value" id="achievementCount">0/8</span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <!-- Progress Overview -->
+            <section class="progress-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-info">
+                            <div class="stat-label">Current Week</div>
+                            <div class="stat-value" id="currentWeek">0</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🤰</div>
+                        <div class="stat-info">
+                            <div class="stat-label">Trimester</div>
+                            <div class="stat-value" id="trimester">Not Started</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">👶</div>
+                        <div class="stat-info">
+                            <div class="stat-label">Baby Size</div>
+                            <div class="stat-value" id="babySize">-</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⏰</div>
+                        <div class="stat-info">
+                            <div class="stat-label">Time to Due Date</div>
+                            <div class="stat-value" id="weeksLeft">40 weeks</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="progress-bar-container">
+                    <div class="progress-labels">
+                        <span>Week 0</span>
+                        <span id="progressPercent">0%</span>
+                        <span>Week 40</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                        <div class="progress-marker" id="progressMarker">🤰</div>
+                    </div>
+                    <div class="trimester-markers">
+                        <span class="trimester-marker" style="left: 0%;">1st</span>
+                        <span class="trimester-marker" style="left: 32.5%;">2nd</span>
+                        <span class="trimester-marker" style="left: 67.5%;">3rd</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Baby Development -->
+            <section class="development-section game-panel">
+                <h2>▸ CHARACTER DEVELOPMENT ◂</h2>
+                <div class="baby-visual game-visual">
+                    <div class="belly game-belly" id="belly">
+                        <div class="baby-icon game-character" id="babyIcon">👶</div>
+                    </div>
+                    <div class="visual-effects" id="visualEffects"></div>
+                </div>
+                <div class="development-info game-info">
+                    <h3 id="developmentTitle">► READY TO START ◄</h3>
+                    <p id="developmentDescription">Press START to begin your quest!</p>
+                </div>
+            </section>
+
+            <!-- Events & Milestones -->
+            <section class="events-section game-log">
+                <h2>▸ QUEST LOG ◂</h2>
+                <div class="events-container" id="eventsContainer">
+                    <div class="event-item welcome quest-item">
+                        <div class="event-week quest-marker">▣</div>
+                        <div class="event-content">
+                            <div class="event-title">► NEW GAME</div>
+                            <div class="event-description">Begin your quest and witness 40 weeks of adventure!</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Symptoms Tracker -->
+            <section class="symptoms-section game-status">
+                <h2>▸ STATUS EFFECTS ◂</h2>
+                <div class="symptoms-grid status-grid" id="symptomsGrid">
+                    <div class="symptom-tag status-tag inactive">🤢 Morning Sickness</div>
+                    <div class="symptom-tag status-tag inactive">😴 Fatigue</div>
+                    <div class="symptom-tag status-tag inactive">🍕 Food Cravings</div>
+                    <div class="symptom-tag status-tag inactive">💪 Back Pain</div>
+                    <div class="symptom-tag status-tag inactive">🚽 Frequent Urination</div>
+                    <div class="symptom-tag status-tag inactive">😊😢 Mood Swings</div>
+                    <div class="symptom-tag status-tag inactive">🔥 Heartburn</div>
+                    <div class="symptom-tag status-tag inactive">💧 Swelling</div>
+                </div>
+            </section>
+
+            <!-- Controls -->
+            <section class="controls-section">
+                <button class="btn btn-primary btn-game" id="startBtn" onclick="startPregnancy()">
+                    <span class="btn-icon">►</span>
+                    <span>START GAME</span>
+                </button>
+                <button class="btn btn-secondary btn-game" id="nextWeekBtn" onclick="nextWeek()" disabled>
+                    <span class="btn-icon">▶</span>
+                    <span>NEXT WEEK</span>
+                </button>
+                <button class="btn btn-accent btn-game" id="skipBtn" onclick="skipWeeks()" disabled>
+                    <span class="btn-icon">▶▶</span>
+                    <span>SKIP +4</span>
+                </button>
+                <button class="btn btn-reset btn-game" id="resetBtn" onclick="resetSimulation()">
+                    <span class="btn-icon">◄◄</span>
+                    <span>NEW GAME</span>
+                </button>
+            </section>
+
+            <!-- Achievements -->
+            <section class="achievements-section game-achievements">
+                <h2>▸ TROPHY ROOM ◂</h2>
+                <div class="achievements-grid" id="achievementsGrid">
+                    <div class="achievement locked achievement-card">
+                        <div class="achievement-icon">🏆</div>
+                        <div class="achievement-name">TRIMESTER I</div>
+                        <div class="achievement-desc">Defeat First Boss</div>
+                    </div>
+                    <div class="achievement locked achievement-card">
+                        <div class="achievement-icon">💖</div>
+                        <div class="achievement-name">HEARTBEAT</div>
+                        <div class="achievement-desc">Unlock Sound Wave</div>
+                    </div>
+                    <div class="achievement locked achievement-card">
+                        <div class="achievement-icon">❓</div>
+                        <div class="achievement-name">MYSTERY BOX</div>
+                        <div class="achievement-desc">Gender Revealed</div>
+                    </div>
+                    <div class="achievement locked achievement-card">
+                        <div class="achievement-icon">🔊</div>
+                        <div class="achievement-name">AUDIO UNLOCKED</div>
+                        <div class="achievement-desc">Hearing Activated</div>
+                    </div>
+                    <div class="achievement locked achievement-card">
+                        <div class="achievement-icon">🏆</div>
+                        <div class="achievement-name">TRIMESTER II</div>
+                        <div class="achievement-desc">Defeat Second Boss</div>
+                    </div>
+                    <div class="achievement locked achievement-card">
+                        <div class="achievement-icon">👀</div>
+                        <div class="achievement-name">VISION MODE</div>
+                        <div class="achievement-desc">Eyes Can Open</div>
+                    </div>
+                    <div class="achievement locked achievement-card">
+                        <div class="achievement-icon">⚡</div>
+                        <div class="achievement-name">MAX LEVEL</div>
+                        <div class="achievement-desc">Full Term Reached</div>
+                    </div>
+                    <div class="achievement locked achievement-card">
+                        <div class="achievement-icon">👑</div>
+                        <div class="achievement-name">FINAL BOSS</div>
+                        <div class="achievement-desc">Birth Complete!</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="game-footer">
+            <p>▣ EDUCATIONAL RPG v1.0 - PRESS START ▣</p>
+        </footer>
+    </div>
+
+    <script src="pregnancy-simulator.js"></script>
+</body>
+</html>

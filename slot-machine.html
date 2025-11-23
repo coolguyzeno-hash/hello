@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Last Dollar Slot Machine</title>
+    <link rel="stylesheet" href="slot-machine.css">
+</head>
+<body>
+    <div class="game-container">
+        <h1>Last Dollar Casino</h1>
+
+        <div class="balance-display">
+            <h2>Balance: $<span id="balance">500</span></h2>
+        </div>
+
+        <div class="slot-machine">
+            <div class="slots">
+                <div class="slot" id="slot1">🍒</div>
+                <div class="slot" id="slot2">🍋</div>
+                <div class="slot" id="slot3">🍊</div>
+            </div>
+        </div>
+
+        <div class="bet-controls">
+            <label for="bet-amount">Bet Amount: $</label>
+            <input type="number" id="bet-amount" value="10" min="1" max="500">
+        </div>
+
+        <button id="spin-btn" class="spin-button">SPIN ($10)</button>
+
+        <div id="message" class="message"></div>
+
+        <div id="last-chance-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2>You're Down to Your Last Dollar!</h2>
+                <p>You could walk away with $1...</p>
+                <p>Or you could risk it all on one final spin...</p>
+                <p>What will it be?</p>
+                <div class="modal-buttons">
+                    <button id="walk-away-btn" class="walk-away-btn">Walk Away with $1</button>
+                    <button id="final-spin-btn" class="final-spin-btn">RISK IT ALL!</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="cutscene" class="cutscene hidden">
+            <div class="cutscene-bg-effect" id="cutscene-bg"></div>
+            <div class="cutscene-slots">
+                <div class="cutscene-slot" id="cutscene-slot1">🍒</div>
+                <div class="cutscene-slot" id="cutscene-slot2">🍋</div>
+                <div class="cutscene-slot" id="cutscene-slot3">🍊</div>
+            </div>
+            <div class="cutscene-content">
+                <div id="cutscene-text"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="slot-machine.js"></script>
+</body>
+</html>

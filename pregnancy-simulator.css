@@ -1,0 +1,914 @@
+/* 2D RPG Pixel Game Theme - Baby Quest */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    image-rendering: pixelated;
+}
+
+body {
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    background: #2b1b5f;
+    background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.1) 2px, rgba(0,0,0,.1) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,.1) 2px, rgba(0,0,0,.1) 4px);
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(139, 69, 255, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 105, 180, 0.2) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0px, transparent 1px, transparent 2px, rgba(255,255,255,.03) 3px),
+        repeating-linear-gradient(90deg, rgba(255,255,255,.03) 0px, transparent 1px, transparent 2px, rgba(255,255,255,.03) 3px);
+    pointer-events: none;
+    animation: scanlines 8s linear infinite;
+    z-index: 9999;
+}
+
+@keyframes scanlines {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(4px); }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #1a1a2e;
+    border: 4px solid #00ffff;
+    box-shadow:
+        0 0 20px rgba(0, 255, 255, 0.5),
+        inset 0 0 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        rgba(0, 255, 255, 0.03) 1px,
+        transparent 2px,
+        transparent 4px
+    );
+    pointer-events: none;
+}
+
+/* Game Header - RPG Style HUD */
+.game-header {
+    background: #0f0f1e;
+    background-image:
+        linear-gradient(45deg, #1a1a2e 25%, transparent 25%),
+        linear-gradient(-45deg, #1a1a2e 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #1a1a2e 75%),
+        linear-gradient(-45deg, transparent 75%, #1a1a2e 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    color: #00ffff;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    border-bottom: 4px solid #00ffff;
+    box-shadow: inset 0 -4px 0 0 rgba(0, 255, 255, 0.3);
+}
+
+.game-header h1 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    text-shadow:
+        2px 2px 0px #ff00ff,
+        4px 4px 0px #000000;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 2px;
+    animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    from {
+        text-shadow:
+            2px 2px 0px #ff00ff,
+            4px 4px 0px #000000;
+    }
+    to {
+        text-shadow:
+            2px 2px 0px #ff00ff,
+            4px 4px 0px #000000,
+            0 0 20px #00ffff;
+    }
+}
+
+.subtitle {
+    font-size: 0.6em;
+    color: #ffff00;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 0px #000000;
+}
+
+.game-stats {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+    position: relative;
+    z-index: 1;
+    flex-wrap: wrap;
+}
+
+.stat-badge {
+    background: #000000;
+    border: 3px solid #00ff00;
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow:
+        0 0 10px rgba(0, 255, 0, 0.5),
+        inset 0 0 10px rgba(0, 255, 0, 0.1);
+    position: relative;
+}
+
+.stat-badge::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, transparent 40%, rgba(0, 255, 0, 0.3) 50%, transparent 60%);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.badge-icon {
+    font-size: 1.2em;
+    position: relative;
+    z-index: 1;
+}
+
+.badge-value {
+    font-weight: bold;
+    font-size: 0.7em;
+    color: #00ff00;
+    text-shadow: 0 0 5px #00ff00;
+    position: relative;
+    z-index: 1;
+}
+
+/* Main Content */
+main {
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+section {
+    margin-bottom: 20px;
+    background: #16213e;
+    padding: 20px;
+    border: 3px solid #00ffff;
+    box-shadow:
+        0 0 15px rgba(0, 255, 255, 0.3),
+        inset 0 0 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg,
+        transparent,
+        #00ffff 20%,
+        #ff00ff 50%,
+        #00ffff 80%,
+        transparent
+    );
+}
+
+section h2 {
+    color: #00ffff;
+    margin-bottom: 20px;
+    font-size: 0.9em;
+    text-align: center;
+    text-shadow:
+        2px 2px 0px #000000,
+        0 0 10px #00ffff;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Progress Section */
+.progress-section {
+    background: #0f0f1e;
+    border-color: #ffff00;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background: #000000;
+    padding: 12px;
+    border: 2px solid #ffff00;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 0, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.stat-card:hover {
+    box-shadow: 0 0 20px rgba(255, 255, 0, 0.6);
+    transform: scale(1.02);
+}
+
+.stat-icon {
+    font-size: 2em;
+    filter: drop-shadow(0 0 5px #ffff00);
+}
+
+.stat-info {
+    flex: 1;
+}
+
+.stat-label {
+    font-size: 0.45em;
+    color: #00ff00;
+    margin-bottom: 4px;
+    text-shadow: 0 0 5px #00ff00;
+}
+
+.stat-value {
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #ffff00;
+    text-shadow: 0 0 5px #ffff00;
+}
+
+.progress-bar-container {
+    background: #000000;
+    padding: 15px;
+    border: 2px solid #00ff00;
+}
+
+.progress-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #00ff00;
+    font-size: 0.5em;
+    text-shadow: 0 0 5px #00ff00;
+}
+
+.progress-bar {
+    height: 24px;
+    background: #1a1a2e;
+    border: 2px solid #00ffff;
+    position: relative;
+    overflow: visible;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.progress-fill {
+    height: 100%;
+    background: repeating-linear-gradient(
+        90deg,
+        #00ff00 0px,
+        #00ff00 4px,
+        #00dd00 4px,
+        #00dd00 8px
+    );
+    width: 0%;
+    transition: width 0.5s ease;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.8);
+    animation: progressPulse 1s ease-in-out infinite;
+}
+
+@keyframes progressPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+.progress-marker {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(-50%, -50%);
+    font-size: 1.8em;
+    transition: left 0.5s ease;
+    filter: drop-shadow(0 0 8px #ffff00) drop-shadow(0 0 4px #000);
+    animation: markerBob 1s ease-in-out infinite;
+}
+
+@keyframes markerBob {
+    0%, 100% { transform: translate(-50%, -50%); }
+    50% { transform: translate(-50%, -60%); }
+}
+
+.trimester-markers {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 8px;
+    font-weight: bold;
+    color: #ff00ff;
+    font-size: 0.5em;
+    text-shadow: 0 0 5px #ff00ff;
+}
+
+.trimester-marker {
+    text-shadow: 0 0 5px #ff00ff;
+}
+
+/* Game Panel - Baby Development */
+.game-panel {
+    background: #0a0a15;
+    border: 3px solid #ff00ff;
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.4);
+}
+
+.game-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    position: relative;
+    min-height: 180px;
+}
+
+.game-belly {
+    width: 140px;
+    height: 140px;
+    background:
+        radial-gradient(circle at 30% 30%, #ff00ff, transparent 70%),
+        radial-gradient(circle at 70% 70%, #00ffff, transparent 70%),
+        #1a1a2e;
+    border: 4px solid #00ffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow:
+        0 0 30px rgba(0, 255, 255, 0.6),
+        inset 0 0 30px rgba(0, 0, 0, 0.8);
+    transition: all 0.5s ease;
+    animation: pixelPulse 2s ease-in-out infinite;
+    image-rendering: pixelated;
+}
+
+@keyframes pixelPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow:
+            0 0 30px rgba(0, 255, 255, 0.6),
+            inset 0 0 30px rgba(0, 0, 0, 0.8);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow:
+            0 0 40px rgba(255, 0, 255, 0.8),
+            inset 0 0 30px rgba(0, 0, 0, 0.8);
+    }
+}
+
+.game-character {
+    font-size: 4em;
+    animation: pixelBounce 1.2s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px #ffff00);
+}
+
+@keyframes pixelBounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-12px) scale(1.1); }
+}
+
+.visual-effects {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.game-info {
+    text-align: center;
+    background: #000000;
+    padding: 15px;
+    border: 2px solid #ff00ff;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.4);
+}
+
+.game-info h3 {
+    color: #ffff00;
+    margin-bottom: 10px;
+    font-size: 0.7em;
+    text-shadow:
+        2px 2px 0px #000000,
+        0 0 10px #ffff00;
+}
+
+.game-info p {
+    color: #00ffff;
+    font-size: 0.5em;
+    line-height: 1.6;
+    text-shadow: 0 0 5px #00ffff;
+}
+
+/* Quest Log */
+.game-log {
+    background: #0f0f1e;
+    border-color: #ffff00;
+}
+
+.events-container {
+    max-height: 350px;
+    overflow-y: auto;
+    padding: 10px;
+    background: #000000;
+    border: 2px solid #ffff00;
+}
+
+.events-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.events-container::-webkit-scrollbar-track {
+    background: #1a1a2e;
+}
+
+.events-container::-webkit-scrollbar-thumb {
+    background: #00ff00;
+    box-shadow: 0 0 5px #00ff00;
+}
+
+.quest-item {
+    background: #1a1a2e;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+    border: 2px solid #00ffff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.quest-item:hover {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+    border-color: #ffff00;
+}
+
+.quest-marker {
+    font-size: 1.5em;
+    min-width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 0 5px #00ffff);
+}
+
+.event-content {
+    flex: 1;
+}
+
+.event-title {
+    font-weight: bold;
+    color: #ffff00;
+    margin-bottom: 5px;
+    font-size: 0.55em;
+    text-shadow: 0 0 5px #ffff00;
+}
+
+.event-description {
+    color: #00ff00;
+    font-size: 0.45em;
+    line-height: 1.5;
+    text-shadow: 0 0 3px #00ff00;
+}
+
+.event-week {
+    color: #ff00ff;
+    font-size: 0.5em;
+    text-shadow: 0 0 5px #ff00ff;
+}
+
+/* Status Effects */
+.game-status {
+    background: #0a0a15;
+    border-color: #ff00ff;
+}
+
+.status-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+}
+
+.status-tag {
+    background: #000000;
+    padding: 10px 15px;
+    text-align: center;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 2px solid #666666;
+    font-size: 0.5em;
+    color: #666666;
+}
+
+.status-tag.inactive {
+    opacity: 0.3;
+    filter: grayscale(100%);
+    box-shadow: none;
+}
+
+.status-tag:not(.inactive) {
+    background: #1a1a2e;
+    color: #ff0000;
+    border-color: #ff0000;
+    animation: statusGlow 2s ease-in-out infinite;
+    text-shadow: 0 0 5px #ff0000;
+}
+
+@keyframes statusGlow {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(255, 0, 0, 0.8);
+    }
+}
+
+/* Game Buttons - Pixel RPG Style */
+.controls-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    background: #0f0f1e;
+    border-color: #00ff00;
+}
+
+.btn-game {
+    padding: 12px 20px;
+    font-size: 0.5em;
+    border: 3px solid;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.8);
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-game:hover:not(:disabled) {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.8);
+}
+
+.btn-game:active:not(:disabled) {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.8);
+}
+
+.btn-game:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    filter: grayscale(100%);
+}
+
+.btn-primary {
+    background: #00ff00;
+    color: #000000;
+    border-color: #00ff00;
+    text-shadow: none;
+}
+
+.btn-primary:hover:not(:disabled) {
+    box-shadow:
+        6px 6px 0px rgba(0, 0, 0, 0.8),
+        0 0 20px rgba(0, 255, 0, 0.6);
+}
+
+.btn-secondary {
+    background: #00ffff;
+    color: #000000;
+    border-color: #00ffff;
+    text-shadow: none;
+}
+
+.btn-secondary:hover:not(:disabled) {
+    box-shadow:
+        6px 6px 0px rgba(0, 0, 0, 0.8),
+        0 0 20px rgba(0, 255, 255, 0.6);
+}
+
+.btn-accent {
+    background: #ffff00;
+    color: #000000;
+    border-color: #ffff00;
+    text-shadow: none;
+}
+
+.btn-accent:hover:not(:disabled) {
+    box-shadow:
+        6px 6px 0px rgba(0, 0, 0, 0.8),
+        0 0 20px rgba(255, 255, 0, 0.6);
+}
+
+.btn-reset {
+    background: #ff0000;
+    color: #ffffff;
+    border-color: #ff0000;
+}
+
+.btn-reset:hover:not(:disabled) {
+    box-shadow:
+        6px 6px 0px rgba(0, 0, 0, 0.8),
+        0 0 20px rgba(255, 0, 0, 0.6);
+}
+
+.btn-icon {
+    font-size: 1.2em;
+    filter: drop-shadow(0 0 3px currentColor);
+}
+
+/* Achievements - Trophy Room */
+.game-achievements {
+    background: #0a0a15;
+    border-color: #ffd700;
+}
+
+.game-achievements h2 {
+    color: #ffd700;
+    text-shadow:
+        2px 2px 0px #000000,
+        0 0 15px #ffd700;
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+}
+
+.achievement-card {
+    background: #000000;
+    padding: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 3px solid #333333;
+    position: relative;
+}
+
+.achievement-card.locked {
+    opacity: 0.2;
+    filter: grayscale(100%);
+}
+
+.achievement-card.locked .achievement-icon {
+    filter: blur(2px);
+}
+
+.achievement-card:not(.locked) {
+    border-color: #ffd700;
+    animation: achievementUnlock 0.6s ease-out;
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+}
+
+.achievement-card:not(.locked)::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(45deg,
+        transparent 40%,
+        rgba(255, 215, 0, 0.4) 50%,
+        transparent 60%
+    );
+    animation: shimmerAchievement 2s infinite;
+}
+
+@keyframes achievementUnlock {
+    0% {
+        transform: scale(0.5) rotate(-180deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2) rotate(20deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes shimmerAchievement {
+    0% { transform: translateX(-200%); }
+    100% { transform: translateX(200%); }
+}
+
+.achievement-icon {
+    font-size: 2.5em;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+}
+
+.achievement-card:not(.locked) .achievement-icon {
+    filter: drop-shadow(0 0 10px #ffd700);
+    animation: iconFloat 2s ease-in-out infinite;
+}
+
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.achievement-name {
+    font-weight: bold;
+    color: #ffd700;
+    margin-bottom: 5px;
+    font-size: 0.5em;
+    text-shadow: 0 0 5px #ffd700;
+    position: relative;
+    z-index: 1;
+}
+
+.achievement-desc {
+    font-size: 0.4em;
+    color: #00ff00;
+    text-shadow: 0 0 3px #00ff00;
+    position: relative;
+    z-index: 1;
+}
+
+/* Footer */
+.game-footer {
+    background: #0f0f1e;
+    color: #00ff00;
+    text-align: center;
+    padding: 15px;
+    border-top: 3px solid #00ff00;
+    box-shadow: inset 0 4px 0 0 rgba(0, 255, 0, 0.2);
+}
+
+.game-footer p {
+    font-size: 0.45em;
+    text-shadow: 0 0 5px #00ff00;
+    letter-spacing: 1px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .game-header h1 {
+        font-size: 1em;
+    }
+
+    .subtitle {
+        font-size: 0.5em;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .game-stats {
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .stat-badge {
+        font-size: 0.8em;
+    }
+
+    section {
+        padding: 15px;
+    }
+
+    section h2 {
+        font-size: 0.7em;
+    }
+
+    .game-belly {
+        width: 100px;
+        height: 100px;
+    }
+
+    .game-character {
+        font-size: 3em;
+    }
+
+    .controls-section {
+        flex-direction: column;
+    }
+
+    .btn-game {
+        width: 100%;
+        justify-content: center;
+        font-size: 0.55em;
+    }
+
+    .achievements-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Pixel Effects */
+@media (min-width: 769px) {
+    .container {
+        animation: containerGlow 3s ease-in-out infinite alternate;
+    }
+}
+
+@keyframes containerGlow {
+    0% {
+        box-shadow:
+            0 0 20px rgba(0, 255, 255, 0.5),
+            inset 0 0 30px rgba(0, 0, 0, 0.5);
+    }
+    100% {
+        box-shadow:
+            0 0 40px rgba(255, 0, 255, 0.7),
+            inset 0 0 30px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Additional RPG Elements */
+.belly, .game-belly {
+    border-radius: 0 !important;
+}
+
+header, footer, section, .stat-card, .stat-badge,
+.progress-bar-container, .quest-item, .status-tag,
+.achievement-card, .game-info {
+    border-radius: 0 !important;
+}
+
+/* Pixel Corners */
+.container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    border: 4px solid transparent;
+    box-shadow:
+        inset 8px 8px 0 -4px #00ffff,
+        inset -8px -8px 0 -4px #00ffff,
+        inset 8px -8px 0 -4px #00ffff,
+        inset -8px 8px 0 -4px #00ffff;
+}

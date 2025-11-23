@@ -214,3 +214,103 @@ function preloadImages() {
 window.addEventListener('load', () => {
     preloadImages();
 });
+
+// XP System
+let currentXP = 0;
+let maxXP = 100;
+let level = 1;
+
+function updateXPBar() {
+    const xpFill = document.getElementById('xpFill');
+    const currentXPEl = document.getElementById('currentXP');
+    const maxXPEl = document.getElementById('maxXP');
+    const levelEl = document.getElementById('level');
+
+    const percentage = (currentXP / maxXP) * 100;
+    xpFill.style.width = percentage + '%';
+
+    currentXPEl.textContent = currentXP;
+    maxXPEl.textContent = maxXP;
+    levelEl.textContent = level;
+}
+
+function addXP(amount = 15) {
+    currentXP += amount;
+
+    // Check for level up
+    if (currentXP >= maxXP) {
+        levelUp();
+    }
+
+    updateXPBar();
+}
+
+function levelUp() {
+    level++;
+    currentXP = currentXP - maxXP;
+    maxXP = Math.floor(maxXP * 1.5); // Increase XP needed for next level
+
+    // Add level up animation/effect
+    const xpContainer = document.querySelector('.xp-container');
+    xpContainer.style.animation = 'none';
+    setTimeout(() => {
+        xpContainer.style.animation = 'levelUp 0.5s ease';
+    }, 10);
+
+    // Show level up message
+    showLevelUpMessage();
+}
+
+function showLevelUpMessage() {
+    const message = document.createElement('div');
+    message.className = 'level-up-message';
+    message.textContent = `LEVEL UP! Level ${level}`;
+    document.body.appendChild(message);
+
+    setTimeout(() => {
+        message.remove();
+    }, 2000);
+}
+
+// Add keyframe animation for level up
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes levelUp {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(99, 102, 241, 0.6); }
+    }
+
+    .level-up-message {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        padding: 2rem 4rem;
+        border-radius: 1rem;
+        font-size: 2rem;
+        font-weight: 800;
+        z-index: 10000;
+        animation: levelUpMsg 2s ease;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes levelUpMsg {
+        0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+        50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+        100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+    }
+`;
+document.head.appendChild(style);
+
+// Add XP button event listener
+const addXpBtn = document.getElementById('addXpBtn');
+if (addXpBtn) {
+    addXpBtn.addEventListener('click', () => {
+        addXP();
+    });
+}
+
+// Initialize XP bar
+updateXPBar();

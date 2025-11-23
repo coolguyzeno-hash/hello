@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zeno's portfolio - Interactive Web Games</title>
+    <link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+    <div class="container">
+        <header class="hero">
+            <div class="profile-section">
+                <img src="Media.jpg" alt="Zeno's Profile" class="profile-pic">
+            </div>
+            <h1 class="glitch" data-text="zeno's portfolio">zeno's portfolio</h1>
+            <p class="tagline">A collection of interactive web-based games</p>
+            <div class="profile-description">
+                <h3>About Me</h3>
+                <p>
+                    Welcome to my game portfolio! I'm Zeno, a passionate and dedicated game developer who has devoted countless hours to
+                    mastering the art of interactive entertainment and web-based gaming experiences. My journey into game development began
+                    with a simple fascination: the power of games to captivate, educate, and inspire players across all walks of life.
+                    What started as a hobby has evolved into a full-fledged passion, driving me to create innovative, engaging, and
+                    memorable gaming experiences that push the boundaries of what browser-based games can achieve.
+                </p>
+                <p>
+                    Throughout my development career, I've explored a diverse range of game genres and mechanics, from addictive incremental
+                    clicker games that test players' strategic thinking and patience, to narrative-driven gambling simulators that blend
+                    risk-taking with storytelling, and even educational RPG-style simulators that transform learning into an adventure.
+                    Each project represents not just a game, but a carefully crafted experience designed to engage players on multiple
+                    levels—intellectually, emotionally, and entertainingly.
+                </p>
+                <p>
+                    My design philosophy centers around accessibility and player engagement. I believe that great games shouldn't require
+                    expensive hardware or complex installations. That's why all my projects are browser-based and instantly playable,
+                    ensuring that anyone with an internet connection can dive into these experiences immediately. This commitment to
+                    accessibility drives every design decision I make, from intuitive user interfaces to responsive controls that work
+                    seamlessly across desktop and mobile devices.
+                </p>
+                <p>
+                    Beyond the technical aspects, I'm deeply invested in the creative storytelling and thematic elements that make games
+                    truly memorable. Whether it's the progression satisfaction of watching numbers grow in an idle game, the heart-pounding
+                    tension of a final casino bet, or the educational journey through pregnancy development, I strive to create experiences
+                    that resonate with players long after they've closed the browser tab. Each game tells a story, teaches a lesson, or
+                    provides a unique perspective that enriches the player's understanding of game design and interactive media.
+                </p>
+                <p>
+                    As you explore my portfolio below, you'll discover three distinct gaming experiences, each showcasing different aspects
+                    of my development skills and creative vision. From systems design and balance in incremental mechanics, to narrative
+                    pacing and dramatic tension in gambling simulations, to educational content delivery through gamification—these projects
+                    represent my growth as a developer and my commitment to creating meaningful interactive experiences. I invite you to
+                    play through each game, experience the mechanics firsthand, and join me on this ongoing journey of game development
+                    excellence. Thank you for visiting, and I hope you enjoy playing these games as much as I enjoyed creating them!
+                </p>
+            </div>
+        </header>
+
+        <main class="games-grid">
+            <!-- XP Clicker Game -->
+            <article class="game-card">
+                <div class="game-icon">💎</div>
+                <h2>XP Clicker</h2>
+                <p class="game-genre">Incremental / Idle Game</p>
+                <p class="game-description">
+                    An addictive incremental clicker game where players earn XP by clicking.
+                    Features a level-up system, upgrades, auto-clickers for passive income,
+                    and an achievement system to unlock milestones.
+                </p>
+                <div class="game-features">
+                    <span class="tag">🎯 Achievement System</span>
+                    <span class="tag">⚡ Auto Clickers</span>
+                    <span class="tag">📈 Progressive Upgrades</span>
+                    <span class="tag">💾 Save Progress</span>
+                </div>
+                <a href="game.html" class="play-button">Play Now</a>
+            </article>
+
+            <!-- Slot Machine -->
+            <article class="game-card">
+                <div class="game-icon">🎰</div>
+                <h2>Last Dollar Casino</h2>
+                <p class="game-genre">Gambling Simulator</p>
+                <p class="game-description">
+                    A slot machine gambling game with a narrative twist. Start with $500
+                    and make your bets. When you reach your last dollar, will you walk
+                    away or risk it all for one final spin?
+                </p>
+                <div class="game-features">
+                    <span class="tag">🎲 3-Reel Slots</span>
+                    <span class="tag">💰 Variable Betting</span>
+                    <span class="tag">🎭 Dramatic Cutscenes</span>
+                    <span class="tag">🚨 High Stakes</span>
+                </div>
+                <a href="slot-machine.html" class="play-button">Play Now</a>
+            </article>
+
+            <!-- Pregnancy Simulator -->
+            <article class="game-card">
+                <div class="game-icon">👶</div>
+                <h2>Baby Quest</h2>
+                <p class="game-genre">Educational RPG Simulator</p>
+                <p class="game-description">
+                    Experience a 40-week pregnancy journey as an RPG adventure! Track
+                    trimesters, discover milestones, manage status effects, and unlock
+                    achievements in this unique educational experience.
+                </p>
+                <div class="game-features">
+                    <span class="tag">📅 40-Week Journey</span>
+                    <span class="tag">🏆 8 Achievements</span>
+                    <span class="tag">📜 Quest Log System</span>
+                    <span class="tag">🎮 RPG Mechanics</span>
+                </div>
+                <a href="pregnancy-simulator.html" class="play-button">Play Now</a>
+            </article>
+        </main>
+
+        <footer>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Games</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Genres</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Fun</span>
+                </div>
+            </div>
+            <p class="footer-text">All games are browser-based and require no installation</p>
+        </footer>
+    </div>
+
+    <script>
+        // Add subtle animation on card hover
+        document.querySelectorAll('.game-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Glitch effect for title
+        const glitchElement = document.querySelector('.glitch');
+        setInterval(() => {
+            if (Math.random() > 0.95) {
+                glitchElement.classList.add('glitch-active');
+                setTimeout(() => {
+                    glitchElement.classList.remove('glitch-active');
+                }, 200);
+            }
+        }, 2000);
+    </script>
+</body>
+</html>

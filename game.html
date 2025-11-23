@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XP Clicker - Idle Game</title>
+    <meta name="description" content="An addictive incremental clicker game">
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <h1>⚡ XP Clicker Game</h1>
+            <div class="stats-bar">
+                <div class="stat">
+                    <span class="stat-label">Level</span>
+                    <span class="stat-value" id="level">1</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">XP</span>
+                    <span class="stat-value" id="xp">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">XP/s</span>
+                    <span class="stat-value" id="xpPerSec">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Coins</span>
+                    <span class="stat-value" id="coins">0</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="game-main">
+            <section class="click-section">
+                <div class="xp-progress">
+                    <div class="xp-bar-container">
+                        <div class="xp-bar" id="xpBar"></div>
+                        <span class="xp-text" id="xpText">0 / 100</span>
+                    </div>
+                </div>
+
+                <button class="click-button" id="clickBtn">
+                    <span class="click-emoji">💎</span>
+                    <span class="click-text">Click Me!</span>
+                    <span class="click-value">+<span id="clickValue">1</span> XP</span>
+                </button>
+
+                <div class="click-effects" id="clickEffects"></div>
+            </section>
+
+            <section class="upgrades-section">
+                <h2>Upgrades</h2>
+                <div class="upgrades-grid" id="upgradesGrid">
+                    <!-- Upgrades will be dynamically generated -->
+                </div>
+            </section>
+
+            <section class="auto-clickers-section">
+                <h2>Auto Clickers</h2>
+                <div class="auto-clickers-grid" id="autoClickersGrid">
+                    <!-- Auto clickers will be dynamically generated -->
+                </div>
+            </section>
+
+            <section class="achievements-section">
+                <h2>Achievements</h2>
+                <div class="achievements-grid" id="achievementsGrid">
+                    <!-- Achievements will be dynamically generated -->
+                </div>
+            </section>
+        </main>
+
+        <footer class="game-footer">
+            <button class="save-btn" id="saveBtn">💾 Save Game</button>
+            <button class="reset-btn" id="resetBtn">🔄 Reset Game</button>
+        </footer>
+    </div>
+
+    <div class="level-up-overlay" id="levelUpOverlay">
+        <div class="level-up-content">
+            <h2>LEVEL UP!</h2>
+            <p class="new-level">Level <span id="newLevel">2</span></p>
+            <p class="level-bonus">+10 Coins Earned!</p>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
