@@ -3,7 +3,8 @@
     "allow": [
       "Bash(dir /s /b)",
       "Bash(findstr /i \"Media.jpg\")",
-      "Bash(git add .)"
+      "Bash(git add .)",
+      "Bash(git add -A)"
     ],
     "deny": [],
     "ask": []

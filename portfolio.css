@@ -47,9 +47,9 @@ body::before {
 }
 
 .container {
-    max-width: 1800px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 80px 40px;
+    padding: 60px 20px;
 }
 
 /* Hero Section */
@@ -69,11 +69,11 @@ body::before {
 }
 
 .profile-pic {
-    width: 220px;
-    height: 220px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     object-fit: cover;
-    border: 5px solid rgba(245, 245, 220, 0.3);
+    border: 4px solid rgba(245, 245, 220, 0.3);
     box-shadow:
         0 0 40px rgba(220, 38, 38, 0.5),
         0 0 80px rgba(245, 245, 220, 0.3),
@@ -97,39 +97,16 @@ body::before {
 }
 
 .profile-description {
-    max-width: 1200px;
-    margin: 40px auto 0;
-    font-size: 1.15rem;
-    line-height: 2;
+    max-width: 700px;
+    margin: 30px auto 0;
+    font-size: 1.1rem;
+    line-height: 1.8;
     color: var(--text-secondary);
     background: rgba(245, 245, 220, 0.05);
-    padding: 48px 60px;
-    border-radius: 24px;
-    border: 2px solid rgba(245, 245, 220, 0.2);
+    padding: 24px 32px;
+    border-radius: 16px;
+    border: 1px solid rgba(245, 245, 220, 0.15);
     backdrop-filter: blur(10px);
-    text-align: left;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-.profile-description h3 {
-    font-size: 2.5rem;
-    color: var(--beige-light);
-    margin-bottom: 30px;
-    text-align: center;
-    background: linear-gradient(135deg, var(--beige-light), var(--accent));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 800;
-}
-
-.profile-description p {
-    margin-bottom: 24px;
-    text-indent: 2em;
-}
-
-.profile-description p:last-child {
-    margin-bottom: 0;
 }
 
 .hero::before {
@@ -153,9 +130,9 @@ body::before {
 }
 
 h1 {
-    font-size: 6rem;
+    font-size: 5rem;
     font-weight: 800;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
     background: linear-gradient(135deg, var(--beige-light) 0%, var(--accent) 50%, var(--primary) 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -206,19 +183,18 @@ h1 {
 }
 
 .tagline {
-    font-size: 1.6rem;
+    font-size: 1.35rem;
     color: var(--text-secondary);
     font-weight: 400;
     letter-spacing: 0.5px;
-    margin-bottom: 20px;
 }
 
 /* Games Grid */
 .games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-    gap: 40px;
-    margin-bottom: 120px;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 32px;
+    margin-bottom: 100px;
 }
 
 /* Glassmorphism Card */
@@ -226,8 +202,8 @@ h1 {
     background: var(--card-bg);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-radius: 28px;
-    padding: 56px;
+    border-radius: 24px;
+    padding: 48px;
     position: relative;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -278,8 +254,8 @@ h1 {
 }
 
 .game-icon {
-    font-size: 6rem;
-    margin-bottom: 28px;
+    font-size: 5rem;
+    margin-bottom: 24px;
     display: inline-block;
     filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
     animation: float 4s ease-in-out infinite;
@@ -291,8 +267,8 @@ h1 {
 }
 
 .game-card h2 {
-    font-size: 2.75rem;
-    margin-bottom: 16px;
+    font-size: 2.25rem;
+    margin-bottom: 12px;
     font-weight: 700;
     color: var(--text-primary);
     letter-spacing: -0.5px;
@@ -314,9 +290,9 @@ h1 {
 
 .game-description {
     color: var(--text-secondary);
-    margin-bottom: 32px;
-    line-height: 1.9;
-    font-size: 1.15rem;
+    margin-bottom: 28px;
+    line-height: 1.8;
+    font-size: 1rem;
     font-weight: 400;
 }
 
